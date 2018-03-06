@@ -1,0 +1,36 @@
+version: "2"
+services:
+  db:
+    build: .docker/mariadb-strict
+    container_name: mariadb-strict
+    ports:
+      - 3306:3306
+    volumes:
+      - .docker/mariadb-strict/log:/var/log/mysql
+      - .docker/mariadb-strict/data:/var/lib/mysql
+      - .docker/mariadb-strict/dump:/docker-entrypoint-initdb.d
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      #- MYSQL_USER=myuser
+      #- MYSQL_PASSWORD=secret
+      #- MYSQL_DATABASE=test
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - db:db
+    depends_on:
+      - db
+    environment:
+      #- PMA_ARBITRARY=1
+      #- MYSQL_USER=myuser
+      #- MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=root
+      #- PMA_HOST=
+    restart: always
+    ports:
+      - 8181:80
+    volumes:
+      - /.docker/phpmyadmin/sessions
+      #- .docker/phpmyadmin
