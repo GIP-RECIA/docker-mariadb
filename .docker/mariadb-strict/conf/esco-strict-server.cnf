@@ -107,6 +107,7 @@ innodb_file_format_check=1
 innodb_file_format_max=Barracuda
 innodb_file_per_table=1
 innodb_strict_mode=ON
+innodb_default_row_format=dynamic
 
 # JG - here are some customization defined from migration of mysql 5.5
 # setted by default so removed

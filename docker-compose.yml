@@ -28,7 +28,7 @@ services:
       #- MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=root
       #- PMA_HOST=
-    restart: always
+    #restart: always
     ports:
       - 8181:80
     volumes:
