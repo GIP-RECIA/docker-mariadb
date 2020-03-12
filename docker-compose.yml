@@ -4,7 +4,7 @@ services:
     build: .docker/mariadb-strict
     container_name: mariadb-strict
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - .docker/mariadb-strict/log:/var/log/mysql
       - .docker/mariadb-strict/data:/var/lib/mysql
