@@ -15,6 +15,11 @@ services:
       #- MYSQL_USER=myuser
       #- MYSQL_PASSWORD=secret
       #- MYSQL_DATABASE=test
+    healthcheck:
+      test: "cat /proc/net/tcp /proc/net/tcp6 | grep ':0CEA'"
+      interval: 10s
+      timeout: 5s
+      retries: 5
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
