@@ -1,4 +1,4 @@
-FROM mariadb:10.1.35
+FROM mariadb:10.1.41
 
 ARG GROUP_ID=1000
 ARG USER_ID=1000
