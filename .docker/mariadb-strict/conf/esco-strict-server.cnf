@@ -48,9 +48,10 @@ max_connections        = 1000
 #
 # * Query Cache Configuration
 #
-query_cache_type = ON
-# JG - up from 16M to 128M
-query_cache_size = 128M
+# JG - disabling due to poor performance
+query_cache_type = OFF
+# JG - up from 16M to 0M
+query_cache_size = 0
 query_cache_limit = 10M
 
 #
