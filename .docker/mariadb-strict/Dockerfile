@@ -1,10 +1,10 @@
-FROM mariadb:10.2.33
+FROM mariadb:10.3.24
 
-#ARG GROUP_ID=1000
-#ARG USER_ID=1000
+ARG GROUP_ID=1000
+ARG USER_ID=1000
 
 # Fix permissions to match host user
-#RUN usermod -u ${USER_ID:-1000} mysql && groupmod -g ${GROUP_ID:-1000} mysql
+RUN usermod -u ${USER_ID:-1000} mysql && groupmod -g ${GROUP_ID:-1000} mysql
 
 # Append config to defaults
 COPY conf/esco-strict-server.cnf /etc/mysql/conf.d/custom.cnf
