@@ -1,7 +1,7 @@
-FROM mariadb:10.3.24
+FROM mariadb:10.6
 
-ARG GROUP_ID=1000
-ARG USER_ID=1000
+ARG GROUP_ID=1001
+ARG USER_ID=1001
 
 # Fix permissions to match host user
 RUN usermod -u ${USER_ID:-1000} mysql && groupmod -g ${GROUP_ID:-1000} mysql
