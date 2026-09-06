@@ -102,8 +102,6 @@ max_connect_errors=100
 # Read the manual for more InnoDB related options. There are many!
 # JG - Je prefere SET l'engine pour éviter les problemes
 default-storage-engine=INNODB
-innodb-large-prefix=1
-innodb_file_format=Barracuda
 innodb_file_per_table=1
 innodb_strict_mode=ON
 innodb_default_row_format=dynamic

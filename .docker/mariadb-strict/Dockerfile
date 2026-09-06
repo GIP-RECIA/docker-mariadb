@@ -1,4 +1,4 @@
-FROM mariadb:10.6
+FROM mariadb:11.8
 
 ARG GROUP_ID=1001
 ARG USER_ID=1001
@@ -30,4 +30,4 @@ EXPOSE 3306
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD ["mysqld"]
+CMD ["mariadbd"]

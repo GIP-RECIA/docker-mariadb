@@ -22,6 +22,24 @@ For linux install : see documentation [Docker](https://docs.docker.com/install/l
 git clone git@github.com:GIP-RECIA/docker-mariadb.git
 ```
 
+### Upgrading MariaDB
+
+The image uses MariaDB 11.8 LTS. Before upgrading an existing 10.6 data directory,
+create a logical backup and restore it into a fresh data directory. Do not skip this
+backup: the data directory is mounted from `.docker/mariadb-strict/data`.
+
+```bash
+docker compose exec db mariadb-dump -uroot -proot --all-databases --routines --events --single-transaction > mariadb-backup.sql
+docker compose down
+mv .docker/mariadb-strict/data .docker/mariadb-strict/data-10.6-backup
+mkdir .docker/mariadb-strict/data
+docker compose up -d --build
+docker compose exec -T db mariadb -uroot -proot < mariadb-backup.sql
+```
+
+Keep `.docker/mariadb-strict/data-10.6-backup` until the restored databases have
+been verified.
+
 * Download required docker images
 
 ```bash
